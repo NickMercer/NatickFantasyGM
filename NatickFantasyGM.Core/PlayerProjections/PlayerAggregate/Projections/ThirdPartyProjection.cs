@@ -4,7 +4,7 @@ using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
 
 namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Projections;
 
-public class Projection : BaseEntity<Guid>
+public class ThirdPartyProjection : BaseEntity<Guid>
 {
     public int ProjectionSourceId { get; }
 
@@ -15,7 +15,7 @@ public class Projection : BaseEntity<Guid>
 
     public IEnumerable<Ratio> Ratios => _stats.OfType<Ratio>().ToList().AsReadOnly();
 
-    public Projection(Guid id, int sourceId, List<KeyValuePair<StatIdentifier, double>> simpleStats, List<KeyValuePair<StatIdentifier, string>> ratios)
+    public ThirdPartyProjection(Guid id, int sourceId, List<KeyValuePair<StatIdentifier, double>> simpleStats, List<KeyValuePair<StatIdentifier, string>> ratios)
     {
         Id = Guard.Against.Default(id, nameof(Id));
         ProjectionSourceId = Guard.Against.NegativeOrZero(sourceId, nameof(ProjectionSourceId));
