@@ -1,10 +1,5 @@
 ﻿using Ardalis.GuardClauses;
 using Natick.SharedKernel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
 

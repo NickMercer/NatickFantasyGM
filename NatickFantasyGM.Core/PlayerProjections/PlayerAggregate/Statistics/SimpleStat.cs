@@ -1,6 +1,4 @@
-﻿using Ardalis.GuardClauses;
-
-namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
+﻿namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
 
 public class SimpleStat : Stat
 {

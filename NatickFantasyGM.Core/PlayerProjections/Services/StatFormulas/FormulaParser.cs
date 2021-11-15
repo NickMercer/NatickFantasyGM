@@ -21,7 +21,7 @@ public class FormulaParser
         return result;
     }
 
-    private static List<Stat> GetIncludedStatsFromFormula(string resultAbbreviation, string formula, IEnumerable<Stat> statCollection)
+    public List<Stat> GetIncludedStatsFromFormula(string resultAbbreviation, string formula, IEnumerable<Stat> statCollection)
     {
         var tokens = formula.Split(" ").ToList();
         var tokenList = new List<string>();

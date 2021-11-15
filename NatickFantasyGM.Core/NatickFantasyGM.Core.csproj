@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="PlayerProjections\Exceptions\" />
+    <Folder Include="PlayerProjections\PlayerAggregate\Guards\" />
     <Folder Include="PlayerProjections\Specifications\" />
     <Folder Include="PlayerProjections\SyncedAggregates\" />
     <Folder Include="PlayerProjections\ValueObjects\" />

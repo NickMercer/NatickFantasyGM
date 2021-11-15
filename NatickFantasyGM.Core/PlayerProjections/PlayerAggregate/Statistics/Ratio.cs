@@ -5,14 +5,14 @@ namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
 
 public class Ratio : Stat
 {
-    private string _formula;
+    public string Formula { get; }
     private IEnumerable<Stat> _statCollection;
 
     public override double Value 
     { 
         get
         {
-            return new FormulaParser().Calculate(StatIdentifier.Abbreviation, _formula, _statCollection);
+            return new FormulaParser().Calculate(StatIdentifier.Abbreviation, Formula, _statCollection);
         }
     }
 
@@ -20,7 +20,7 @@ public class Ratio : Stat
     {
         StatIdentifier = identifier;
 
-        _formula = Guard.Against.NullOrWhiteSpace(formula, nameof(formula));
+        Formula = Guard.Against.NullOrWhiteSpace(formula, nameof(formula));
         _statCollection = Guard.Against.NullOrEmpty(statCollection, nameof(statCollection));
     }
 }
