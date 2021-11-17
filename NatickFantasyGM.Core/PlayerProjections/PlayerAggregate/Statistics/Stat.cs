@@ -2,7 +2,7 @@
 
 namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
 
-public abstract class Stat : ValueObject
+public abstract class Stat : ValueObject<Stat>
 {
     public StatIdentifier StatIdentifier { get; protected set; }
 

@@ -14,4 +14,10 @@ public class SimpleStat : Stat
     {
         return new SimpleStat(StatIdentifier, value);
     }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return StatIdentifier;
+        yield return Value;
+    }
 }

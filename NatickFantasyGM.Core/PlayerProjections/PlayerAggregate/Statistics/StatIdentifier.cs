@@ -3,7 +3,7 @@ using Natick.SharedKernel;
 
 namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
 
-public class StatIdentifier : ValueObject
+public class StatIdentifier : ValueObject<StatIdentifier>
 {
     public string Name { get; }
 
@@ -18,5 +18,11 @@ public class StatIdentifier : ValueObject
     public override string ToString()
     {
         return $"{Name} - {Abbreviation}";
+    }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Name;
+        yield return Abbreviation;
     }
 }

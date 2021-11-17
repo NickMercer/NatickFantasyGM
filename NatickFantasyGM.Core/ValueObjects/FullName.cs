@@ -3,7 +3,7 @@ using Natick.SharedKernel;
 
 namespace NatickFantasyGM.Core.ValueObjects;
 
-public class FullName : ValueObject
+public class FullName : ValueObject<FullName>
 {
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
@@ -17,5 +17,11 @@ public class FullName : ValueObject
     public override string ToString()
     {
         return $"{FirstName} {LastName}";
+    }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return FirstName;
+        yield return LastName;
     }
 }

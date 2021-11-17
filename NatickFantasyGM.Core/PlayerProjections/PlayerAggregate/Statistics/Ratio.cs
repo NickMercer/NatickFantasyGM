@@ -23,4 +23,11 @@ public class Ratio : Stat
         Formula = Guard.Against.NullOrWhiteSpace(formula, nameof(formula));
         _statCollection = Guard.Against.NullOrEmpty(statCollection, nameof(statCollection));
     }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return StatIdentifier;
+        yield return Formula;
+        yield return Value;
+    }
 }
