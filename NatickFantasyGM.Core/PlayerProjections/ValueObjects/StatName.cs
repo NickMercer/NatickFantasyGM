@@ -1,15 +1,15 @@
 ﻿using Ardalis.GuardClauses;
 using Natick.SharedKernel;
 
-namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
+namespace NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 
-public class StatIdentifier : ValueObject<StatIdentifier>
+public class StatName : ValueObject<StatName>
 {
     public string Name { get; }
 
     public string Abbreviation { get; }
 
-    public StatIdentifier(string name, string abbreviation)
+    public StatName(string name, string abbreviation)
     {
         Name = Guard.Against.NullOrWhiteSpace(name, nameof(Name));
         Abbreviation = Guard.Against.NullOrWhiteSpace(abbreviation, nameof(Abbreviation));

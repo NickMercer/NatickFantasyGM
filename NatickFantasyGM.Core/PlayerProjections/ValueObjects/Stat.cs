@@ -1,16 +1,21 @@
 ﻿using Natick.SharedKernel;
 
-namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
+namespace NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 
 public abstract class Stat : ValueObject<Stat>
 {
-    public StatIdentifier StatIdentifier { get; protected set; }
+    public StatName StatName { get; protected set; }
 
     public abstract double Value { get; }
 
     public override string ToString()
     {
-        return $"{StatIdentifier.Abbreviation} - {ToValueString()}";
+        return $"{StatName.Abbreviation} - {ToValueString()}";
+    }
+
+    public static SimpleStat Simplify(Stat stat)
+    {
+        return new SimpleStat(stat.StatName, stat.Value);
     }
 
     public virtual string ToValueString()

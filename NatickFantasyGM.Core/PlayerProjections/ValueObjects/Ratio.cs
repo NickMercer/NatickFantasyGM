@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using NatickFantasyGM.Core.PlayerProjections.Services.StatFormulas;
 
-namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
+namespace NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 
 public class Ratio : Stat
 {
@@ -12,13 +12,18 @@ public class Ratio : Stat
     { 
         get
         {
-            return new FormulaParser().Calculate(StatIdentifier.Abbreviation, Formula, _statCollection);
+            return new FormulaParser().Calculate(StatName.Abbreviation, Formula, _statCollection);
         }
     }
 
-    public Ratio(StatIdentifier identifier, string formula, IEnumerable<Stat> statCollection)
+    public static SimpleStat Simplify(Ratio stat)
     {
-        StatIdentifier = identifier;
+        return new SimpleStat(stat.StatName, stat.Value);
+    }
+
+    public Ratio(StatName identifier, string formula, IEnumerable<Stat> statCollection)
+    {
+        StatName = identifier;
 
         Formula = Guard.Against.NullOrWhiteSpace(formula, nameof(formula));
         _statCollection = Guard.Against.NullOrEmpty(statCollection, nameof(statCollection));
@@ -26,7 +31,7 @@ public class Ratio : Stat
 
     protected override IEnumerable<object> GetEqualityComponents()
     {
-        yield return StatIdentifier;
+        yield return StatName;
         yield return Formula;
         yield return Value;
     }

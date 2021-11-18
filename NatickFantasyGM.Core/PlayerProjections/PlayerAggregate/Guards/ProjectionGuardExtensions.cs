@@ -1,6 +1,6 @@
 ﻿using Ardalis.GuardClauses;
-using NatickFantasyGM.Core.PlayerProjections.Enums;
 using NatickFantasyGM.Core.PlayerProjections.Exceptions;
+using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 
 namespace Ardalis.GuardClauses;
 
@@ -16,7 +16,7 @@ public static class ProjectionGuardExtensions
 
     public static void InvalidThirdPartyProjectionCount(this IGuardClause guardClause, int projectionCount, string parameterName)
     {
-        var thirdPartyProjections = ProjectionSourceEnum.List.Except(new List<ProjectionSourceEnum> { ProjectionSourceEnum.Owner });
+        var thirdPartyProjections = ProjectionSource.ThirdPartySources;
         if (projectionCount != thirdPartyProjections.Count())
         {
             throw new ProjectionCountException($"Projection has an invalid amount of third party projections. Expected: {thirdPartyProjections.Count()}, Actual: {projectionCount}.", parameterName);

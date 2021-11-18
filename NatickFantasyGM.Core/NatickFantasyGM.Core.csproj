@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="PlayerProjections\Specifications\" />
     <Folder Include="PlayerProjections\SyncedAggregates\" />
-    <Folder Include="PlayerProjections\ValueObjects\" />
   </ItemGroup>
 
   <ItemGroup>

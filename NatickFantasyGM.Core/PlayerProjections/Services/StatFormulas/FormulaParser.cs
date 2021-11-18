@@ -1,4 +1,4 @@
-﻿using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Statistics;
+﻿using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 using org.mariuszgromada.math.mxparser;
 using System.Text.RegularExpressions;
 
@@ -35,11 +35,11 @@ public class FormulaParser
         });
 
         var includedStats = statCollection
-            .OrderByDescending(x => x.StatIdentifier.Abbreviation.Length)
-            .Where(x => tokenList.Contains(x.StatIdentifier.Abbreviation))
+            .OrderByDescending(x => x.StatName.Abbreviation.Length)
+            .Where(x => tokenList.Contains(x.StatName.Abbreviation))
             .ToList();
 
-        if(includedStats.Select(s => s.StatIdentifier.Abbreviation).Contains(resultAbbreviation))
+        if(includedStats.Select(s => s.StatName.Abbreviation).Contains(resultAbbreviation))
         {
             throw new InvalidOperationException("Stat cannot contain itself in it's formula.");
         }
@@ -51,7 +51,7 @@ public class FormulaParser
         for (int i = 0; i < includedStats.Count; i++)
         {
             formula = formula
-                .Replace(includedStats[i].StatIdentifier.Abbreviation, _varNames[i].ToString());
+                .Replace(includedStats[i].StatName.Abbreviation, _varNames[i].ToString());
         }
 
         return formula;
