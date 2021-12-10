@@ -6,6 +6,8 @@ public abstract class Stat : ValueObject<Stat>
 {
     public StatName StatName { get; protected set; }
 
+    public StatType Type { get; protected set; }
+
     public abstract double Value { get; }
 
     public override string ToString()
@@ -15,7 +17,7 @@ public abstract class Stat : ValueObject<Stat>
 
     public static SimpleStat Simplify(Stat stat)
     {
-        return new SimpleStat(stat.StatName, stat.Value);
+        return new SimpleStat(stat.StatName, stat.Type, stat.Value);
     }
 
     public virtual string ToValueString()

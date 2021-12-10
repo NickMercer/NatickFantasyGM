@@ -19,7 +19,7 @@ public class Projection : ValueObject<Projection>
 
         if(ratios != null)
         {
-            statList.AddRange(ratios.Select(ratio => new SimpleStat(ratio.StatName, ratio.Value)));
+            statList.AddRange(ratios.Select(ratio => new SimpleStat(ratio.StatName, ratio.Type, ratio.Value)));
         }
 
         Stats = statList.AsReadOnly();

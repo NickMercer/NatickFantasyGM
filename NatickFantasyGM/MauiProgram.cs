@@ -5,6 +5,8 @@ using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using NatickFantasyGM.Data;
+using NatickFantasyGM.Infrastructure.PlayerProjections;
+using NatickFantasyGM.Core.PlayerProjections.Interfaces;
 
 namespace NatickFantasyGM
 {
@@ -23,6 +25,7 @@ namespace NatickFantasyGM
 
 			builder.Services.AddBlazorWebView();
 			builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddSingleton<IPlayerRepository>(new PlayerRepository());
 
 			return builder.Build();
 		}

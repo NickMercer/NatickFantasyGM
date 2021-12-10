@@ -6,12 +6,12 @@ using NatickFantasyGM.Core.ValueObjects;
 
 namespace NatickFantasyGM.Core.PlayerProjections.Aggregates;
 
-public class Player : BaseEntity<Guid>, IAggregateRoot
+public class Player : BaseEntity<int>, IAggregateRoot
 {
     public FullName FullName { get; private set; }
     public Evaluation Evaluation { get; private set; }
 
-    public Player(Guid id, FullName name, Evaluation evaluation)
+    public Player(int id, FullName name, Evaluation evaluation)
     {
         Id = Guard.Against.Default(id, nameof(id));
         FullName = name;

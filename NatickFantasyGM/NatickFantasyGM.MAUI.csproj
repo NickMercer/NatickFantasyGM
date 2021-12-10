@@ -75,4 +75,10 @@
 	  <PackageReference Include="Radzen.Blazor" Version="3.11.12" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Natick.SharedKernel\Natick.SharedKernel.csproj" />
+	  <ProjectReference Include="..\NatickFantasyGM.Core\NatickFantasyGM.Core.csproj" />
+	  <ProjectReference Include="..\NatickFantasyGM.Infrastructure\NatickFantasyGM.Infrastructure.csproj" />
+	</ItemGroup>
+
 </Project>

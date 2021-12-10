@@ -1,4 +1,5 @@
-﻿using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
+﻿using NatickFantasyGM.Core.PlayerProjections;
+using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -13,9 +14,9 @@ public class RatioTests
     [InlineData(0, "0")]
     public void ToValueString_IntegerValue_ReturnsInteger(double value, string valueString)
     {
-        var stat = new Ratio(new StatName("Test", "T"), "A * 2", new List<Stat> 
+        var stat = new Ratio(new StatName("Test", "T"), StatType.Offensive, "A * 2", new List<Stat> 
         {
-            new SimpleStat(new StatName("Aaaa", "A"), value)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, value)
         });
 
         var result = stat.ToValueString();
@@ -30,9 +31,9 @@ public class RatioTests
     [InlineData(-1.234567, "-.412")]
     public void ToValueString_DecimalValue_ReturnsThreeDigitDecimal(double value, string valueString)
     {
-        var stat = new Ratio(new StatName("Test", "T"), "A / 3", new List<Stat>
+        var stat = new Ratio(new StatName("Test", "T"), StatType.Offensive, "A / 3", new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), value)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, value)
         });
 
         var result = stat.ToValueString();
@@ -45,9 +46,9 @@ public class RatioTests
     {
         var stats = new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), 12)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, 12)
         };
-        var ratio = new Ratio(new StatName("Test", "T"), "1 / 0", stats);
+        var ratio = new Ratio(new StatName("Test", "T"), StatType.Offensive, "1 / 0", stats);
         stats.Add(ratio);
 
         Assert.Equal(double.NaN, ratio.Value);
@@ -59,9 +60,9 @@ public class RatioTests
     [InlineData(null)]
     public void Constructor_InvalidName_ThrowsArgumentException(string name)
     {
-        void Action() => new Ratio(new StatName(name, "T"), "A / 3", new List<Stat>
+        void Action() => new Ratio(new StatName(name, "T"), StatType.Offensive, "A / 3", new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), 1)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, 1)
         });
 
         Assert.ThrowsAny<ArgumentException>(Action);
@@ -72,9 +73,9 @@ public class RatioTests
     [InlineData(null)]
     public void Constructor_InvalidAbbreviation_ThrowsArgumentException(string abbreviation)
     {
-        void Action() => new Ratio(new StatName("Test", abbreviation), "A / 3", new List<Stat>
+        void Action() => new Ratio(new StatName("Test", abbreviation), StatType.Offensive, "A / 3", new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), 1)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, 1)
         });
 
         Assert.ThrowsAny<ArgumentException>(Action);
@@ -85,9 +86,9 @@ public class RatioTests
     [InlineData(null)]
     public void Constructor_InvalidFormula_ThrowsArgumentException(string formula)
     {
-        void Action() => new Ratio(new StatName("Test", "T"), formula, new List<Stat>
+        void Action() => new Ratio(new StatName("Test", "T"), StatType.Offensive, formula, new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), 1)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, 1)
         });
 
         Assert.ThrowsAny<ArgumentException>(Action);
@@ -96,7 +97,7 @@ public class RatioTests
     [Fact]
     public void Constructor_NullStatCollection_ThrowsArgumentException()
     {
-        void Action() => new Ratio(new StatName("Test", "T"), "A / 3", null);
+        void Action() => new Ratio(new StatName("Test", "T"), StatType.Offensive, "A / 3", null);
 
         Assert.ThrowsAny<ArgumentException>(Action);
     }
@@ -104,7 +105,7 @@ public class RatioTests
     [Fact]
     public void Constructor_EmptyStatCollection_ThrowsArgumentException()
     {
-        void Action() => new Ratio(new StatName("Test", "T"), "A / 3", new List<Stat>());
+        void Action() => new Ratio(new StatName("Test", "T"), StatType.Offensive, "A / 3", new List<Stat>());
 
         Assert.ThrowsAny<ArgumentException>(Action);
     }
@@ -112,11 +113,11 @@ public class RatioTests
     [Fact]
     public void Value_FormulaBasedOnSimpleStats_ReturnsCorrectValue()
     {
-        var ratio = new Ratio(new StatName("Test", "T"), "(A / B) + C", new List<Stat>
+        var ratio = new Ratio(new StatName("Test", "T"), StatType.Offensive, "(A / B) + C", new List<Stat>
         {
-            new SimpleStat(new StatName("Aaa", "A"), 12),
-            new SimpleStat(new StatName("Bbb", "B"), 3),
-            new SimpleStat(new StatName("Ccc", "C"), 0.5)
+            new SimpleStat(new StatName("Aaa", "A"), StatType.Offensive, 12),
+            new SimpleStat(new StatName("Bbb", "B"), StatType.Offensive, 3),
+            new SimpleStat(new StatName("Ccc", "C"), StatType.Offensive, 0.5)
         });
 
         Assert.Equal(4.5, ratio.Value);
@@ -127,12 +128,12 @@ public class RatioTests
     {
         var stats = new List<Stat>
         {
-            new SimpleStat(new StatName("Aaa", "A"), 12),
-            new SimpleStat(new StatName("Bbb", "B"), 3),
-            new SimpleStat(new StatName("Ccc", "C"), 0.5)
+            new SimpleStat(new StatName("Aaa", "A"), StatType.Offensive, 12),
+            new SimpleStat(new StatName("Bbb", "B"), StatType.Offensive, 3),
+            new SimpleStat(new StatName("Ccc", "C"), StatType.Offensive, 0.5)
         };
-        stats.Add(new Ratio(new StatName("Ddd", "D"), "(A / B) + C", stats));
-        var ratio = new Ratio(new StatName("Test", "T"), "D + 5", stats);
+        stats.Add(new Ratio(new StatName("Ddd", "D"), StatType.Offensive, "(A / B) + C", stats));
+        var ratio = new Ratio(new StatName("Test", "T"), StatType.Offensive, "D + 5", stats);
         stats.Add(ratio);
 
         Assert.Equal(9.5, ratio.Value);
@@ -143,9 +144,9 @@ public class RatioTests
     {
         var stats = new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), 12)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, 12)
         };
-        var ratio = new Ratio(new StatName("Test", "T"), "T + 5", stats);
+        var ratio = new Ratio(new StatName("Test", "T"), StatType.Offensive, "T + 5", stats);
         stats.Add(ratio);
 
         Assert.Throws<InvalidOperationException>(() => ratio.Value);
@@ -156,9 +157,9 @@ public class RatioTests
     {
         var stats = new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), 12)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, 12)
         };
-        var ratio = new Ratio(new StatName("Test", "T"), "1 / 0", stats);
+        var ratio = new Ratio(new StatName("Test", "T"), StatType.Offensive, "1 / 0", stats);
         stats.Add(ratio);
 
         Assert.Equal(double.NaN, ratio.Value);
@@ -169,9 +170,9 @@ public class RatioTests
     {
         var stats = new List<Stat>
         {
-            new SimpleStat(new StatName("Aaaa", "A"), 12)
+            new SimpleStat(new StatName("Aaaa", "A"), StatType.Offensive, 12)
         };
-        var ratio = new Ratio(new StatName("Test", "T"), "A / B", stats);
+        var ratio = new Ratio(new StatName("Test", "T"), StatType.Offensive, "A / B", stats);
         stats.Add(ratio);
 
         Assert.Equal(double.NaN, ratio.Value);

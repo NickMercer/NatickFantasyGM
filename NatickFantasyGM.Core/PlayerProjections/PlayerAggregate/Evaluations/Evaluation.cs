@@ -52,13 +52,13 @@ public class Evaluation : BaseEntity<Guid>
             }
 
             var averageValue = valueSum / 100;
-            stats[i] = new SimpleStat(stat.StatName, averageValue); 
+            stats[i] = new SimpleStat(stat.StatName, stat.Type, averageValue); 
         }
 
         //Then calculate all the ratios and turn them into simple stats.
         foreach (var ratio in projection.Ratios)
         {
-            stats.Add(new Ratio(ratio.StatName, ratio.Formula, stats));
+            stats.Add(new Ratio(ratio.StatName, ratio.Type, ratio.Formula, stats.Where(x => x.Type == ratio.Type)));
         }
 
         var simpleStats = stats.Select(stat => Stat.Simplify(stat)).ToList();
@@ -72,7 +72,7 @@ public class Evaluation : BaseEntity<Guid>
 
         foreach (var projStat in projection.SimpleStats)
         {
-            stats.Add(new SimpleStat(projStat.StatName, 0));
+            stats.Add(new SimpleStat(projStat.StatName, projStat.Type, 0));
         }
 
         return stats;

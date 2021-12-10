@@ -1,7 +1,18 @@
 ﻿@page "/"
+@*@using NatickFantasyGM.Core.PlayerProjections.Interfaces
+@inject IPlayerRepository playerRepo;*@
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+@*@code 
+{
+    protected override Task OnInitializedAsync()
+    {
+        var players = playerRepo.GetAll();
+        return base.OnInitializedAsync();
+    }
+}*@

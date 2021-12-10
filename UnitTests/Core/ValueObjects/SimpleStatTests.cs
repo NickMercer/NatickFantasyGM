@@ -1,4 +1,5 @@
-﻿using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
+﻿using NatickFantasyGM.Core.PlayerProjections;
+using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 using System;
 using Xunit;
 
@@ -12,7 +13,7 @@ public class SimpleStatTests
     [InlineData(0, "0")]
     public void ToValueString_IntegerValue_ReturnsInteger(double value, string valueString)
     {
-        var stat = new SimpleStat(new StatName("Test", "T"), value);
+        var stat = new SimpleStat(new StatName("Test", "T"), StatType.Offensive, value);
 
         var result = stat.ToValueString();
 
@@ -26,7 +27,7 @@ public class SimpleStatTests
     [InlineData(-1.234567, "-1.235")]
     public void ToValueString_DecimalValue_ReturnsThreeDigitDecimal(double value, string valueString)
     {
-        var stat = new SimpleStat(new StatName("Test", "T"), value);
+        var stat = new SimpleStat(new StatName("Test", "T"), StatType.Offensive, value);
 
         var result = stat.ToValueString();
 
@@ -38,7 +39,7 @@ public class SimpleStatTests
     [InlineData(null)]
     public void Constructor_InvalidName_ThrowsArgumentException(string name)
     {
-        void Action() => new SimpleStat(new StatName(name, "A"), 12);
+        void Action() => new SimpleStat(new StatName(name, "A"), StatType.Offensive, 12);
 
         Assert.ThrowsAny<ArgumentException>(Action);
     }
@@ -48,7 +49,7 @@ public class SimpleStatTests
     [InlineData(null)]
     public void Constructor_InvalidAbbreviation_ThrowsArgumentException(string abbreviation)
     {
-        void Action() => new SimpleStat(new StatName("Test", abbreviation), 12);
+        void Action() => new SimpleStat(new StatName("Test", abbreviation), StatType.Offensive, 12);
 
         Assert.ThrowsAny<ArgumentException>(Action);
     }
