@@ -6,9 +6,8 @@
 
 <h1>Player Projections</h1>
 
-<RadzenDataGrid Data = "@_players" TItem= "Player" AllowPaging= "true" PageSize= "20", LoadData= "@LoadPlayerGridData">
+<RadzenDataGrid Data = "@_players"TItem= "Player" AllowPaging= "true" PageSize= "20" >
     <Columns>
-        <RadzenDataGridColumn TItem= "Player" Property= "FullName" Title= "Name" />
         <RadzenDataGridColumn TItem= "Player" Property= "FullName" Title= "Name" />
     </Columns>
 </RadzenDataGrid>
@@ -20,11 +19,7 @@
 
     protected override Task OnInitializedAsync()
     {
+        _players = playerRepo.GetAll();
         return base.OnInitializedAsync();
-    }
-
-    private void LoadPlayerGridData(LoadDataArgs args)
-    {
-
     }
 }

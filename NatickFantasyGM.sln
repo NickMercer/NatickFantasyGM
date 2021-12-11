@@ -2,8 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NatickFantasyGM.MAUI", "NatickFantasyGM\NatickFantasyGM.MAUI.csproj", "{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NatickFantasyGM.Core", "NatickFantasyGM.Core\NatickFantasyGM.Core.csproj", "{66929C2F-E1FE-4B6E-AA85-249E36179EEF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NatickFantasyGM.Infrastructure", "NatickFantasyGM.Infrastructure\NatickFantasyGM.Infrastructure.csproj", "{C1426AF5-2003-48A8-9817-33B4477A5D81}"
@@ -16,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Natick.SharedKernel", "Natick.SharedKernel\Natick.SharedKernel.csproj", "{B5500745-9C1E-406E-B078-944DF9C6DE1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatickFantasyGM.UI", "NatickFantasyGM.UI\NatickFantasyGM.UI.csproj", "{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NatickFantasyGM.UI", "NatickFantasyGM.UI\NatickFantasyGM.UI.csproj", "{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,18 +24,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Debug|x64.ActiveCfg = Debug|x64
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Debug|x64.Build.0 = Debug|x64
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Debug|x64.Deploy.0 = Debug|x64
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Release|x64.ActiveCfg = Release|x64
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Release|x64.Build.0 = Release|x64
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}.Release|x64.Deploy.0 = Release|x64
 		{66929C2F-E1FE-4B6E-AA85-249E36179EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66929C2F-E1FE-4B6E-AA85-249E36179EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66929C2F-E1FE-4B6E-AA85-249E36179EEF}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -85,7 +71,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{38F976A9-60D9-4383-ADB7-E54AEB89DCD2} = {AF0C2C78-6337-4227-9CEC-3B7526394771}
 		{66929C2F-E1FE-4B6E-AA85-249E36179EEF} = {AF0C2C78-6337-4227-9CEC-3B7526394771}
 		{C1426AF5-2003-48A8-9817-33B4477A5D81} = {AF0C2C78-6337-4227-9CEC-3B7526394771}
 		{365EEED8-D829-4115-8105-EAB6ADBEEEFE} = {2EF6624E-7C87-40BD-8EBB-055F233BD24E}
