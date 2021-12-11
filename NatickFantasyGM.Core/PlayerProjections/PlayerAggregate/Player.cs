@@ -4,7 +4,7 @@ using Natick.SharedKernel.Interfaces;
 using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Evaluations;
 using NatickFantasyGM.Core.ValueObjects;
 
-namespace NatickFantasyGM.Core.PlayerProjections.Aggregates;
+namespace NatickFantasyGM.Core.PlayerProjections.PlayerAggregate;
 
 public class Player : BaseEntity<int>, IAggregateRoot
 {

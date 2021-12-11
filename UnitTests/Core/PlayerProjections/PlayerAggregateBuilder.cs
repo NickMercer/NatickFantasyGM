@@ -27,8 +27,8 @@ internal class PlayerAggregateBuilder
     {
         var weightedProjections = new List<WeightedProjection>
         {
-            new WeightedProjection(TestZiPSGuid, zipsWeight),
-            new WeightedProjection(TestSteamerGuid, steamerWeight)
+            new WeightedProjection(ProjectionSource.ZiPS, zipsWeight, TestZiPSGuid),
+            new WeightedProjection(ProjectionSource.Steamer, steamerWeight, TestSteamerGuid)
         };
 
         return weightedProjections;

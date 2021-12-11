@@ -1,5 +1,5 @@
 ﻿using Natick.SharedKernel.Interfaces;
-using NatickFantasyGM.Core.PlayerProjections.Aggregates;
+using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate;
 using NatickFantasyGM.Core.PlayerProjections.Specifications.Core;
 
 namespace NatickFantasyGM.Core.PlayerProjections.Interfaces;

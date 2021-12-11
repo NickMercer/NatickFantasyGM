@@ -1,4 +1,4 @@
-﻿using NatickFantasyGM.Core.PlayerProjections.Aggregates;
+﻿using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate;
 using NatickFantasyGM.Core.PlayerProjections.Specifications.Core;
 using System.Linq.Expressions;
 

@@ -50,8 +50,9 @@ public class ThirdPartyProjection : BaseEntity<Guid>
         }
     }
 
-    public Stat GetStat(StatName statName)
+    public bool TryGetStat(StatName statName, out Stat stat)
     {
-        return _stats.First(x => x.StatName == statName);
+        stat = _stats.FirstOrDefault(x => x.StatName == statName);
+        return stat != null;
     }
 }

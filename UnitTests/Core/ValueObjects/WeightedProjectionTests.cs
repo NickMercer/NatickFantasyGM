@@ -1,10 +1,5 @@
-﻿using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate.Projections;
-using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
+﻿using NatickFantasyGM.Core.PlayerProjections.ValueObjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace UnitTests.Core.ValueObjects;
@@ -18,7 +13,7 @@ public class WeightedProjectionTests
     [InlineData(-0.000001)]
     public void Constructor_WeightOutside100PercentRange_ThrowsArgumentException(double weight)
     {
-        void Action() => new WeightedProjection(Guid.NewGuid(), weight);
+        void Action() => new WeightedProjection(ProjectionSource.ZiPS, weight, Guid.NewGuid());
 
         Assert.ThrowsAny<ArgumentException>(Action);
     }
@@ -30,7 +25,7 @@ public class WeightedProjectionTests
     [InlineData(0.000001)]
     public void Constructor_WeightInside100PercentRange_NoException(double weight)
     {
-        var weightedProjection = new WeightedProjection(Guid.NewGuid(), weight);
+        var weightedProjection = new WeightedProjection(ProjectionSource.ZiPS, weight, Guid.NewGuid());
 
         Assert.Equal(weight, weightedProjection.Weight);
     }

@@ -1,0 +1,30 @@
+﻿@page "/player-projections"
+@using NatickFantasyGM.Core.PlayerProjections.Interfaces
+@using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate
+@inject IPlayerRepository playerRepo
+
+
+<h1>Player Projections</h1>
+
+<RadzenDataGrid Data="@_players" TItem="Player" AllowPaging="true" PageSize="20", LoadData="@LoadPlayerGridData">
+    <Columns>
+        <RadzenDataGridColumn TItem="Player" Property="FullName" Title="Name" />
+        <RadzenDataGridColumn TItem="Player" Property="FullName" Title="Name" />
+    </Columns>
+</RadzenDataGrid>
+
+
+@code 
+{
+    private IEnumerable<Player> _players;
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    private void LoadPlayerGridData(LoadDataArgs args)
+    {
+        
+    }
+}

@@ -4,17 +4,19 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NatickFantasyGM.MAUI", "NatickFantasyGM\NatickFantasyGM.MAUI.csproj", "{38F976A9-60D9-4383-ADB7-E54AEB89DCD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatickFantasyGM.Core", "NatickFantasyGM.Core\NatickFantasyGM.Core.csproj", "{66929C2F-E1FE-4B6E-AA85-249E36179EEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NatickFantasyGM.Core", "NatickFantasyGM.Core\NatickFantasyGM.Core.csproj", "{66929C2F-E1FE-4B6E-AA85-249E36179EEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatickFantasyGM.Infrastructure", "NatickFantasyGM.Infrastructure\NatickFantasyGM.Infrastructure.csproj", "{C1426AF5-2003-48A8-9817-33B4477A5D81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NatickFantasyGM.Infrastructure", "NatickFantasyGM.Infrastructure\NatickFantasyGM.Infrastructure.csproj", "{C1426AF5-2003-48A8-9817-33B4477A5D81}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AF0C2C78-6337-4227-9CEC-3B7526394771}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2EF6624E-7C87-40BD-8EBB-055F233BD24E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_tests", "_tests", "{2EF6624E-7C87-40BD-8EBB-055F233BD24E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{365EEED8-D829-4115-8105-EAB6ADBEEEFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{365EEED8-D829-4115-8105-EAB6ADBEEEFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Natick.SharedKernel", "Natick.SharedKernel\Natick.SharedKernel.csproj", "{B5500745-9C1E-406E-B078-944DF9C6DE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Natick.SharedKernel", "Natick.SharedKernel\Natick.SharedKernel.csproj", "{B5500745-9C1E-406E-B078-944DF9C6DE1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatickFantasyGM.UI", "NatickFantasyGM.UI\NatickFantasyGM.UI.csproj", "{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,16 @@ Global
 		{B5500745-9C1E-406E-B078-944DF9C6DE1D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B5500745-9C1E-406E-B078-944DF9C6DE1D}.Release|x64.ActiveCfg = Release|Any CPU
 		{B5500745-9C1E-406E-B078-944DF9C6DE1D}.Release|x64.Build.0 = Release|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Debug|x64.Build.0 = Debug|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Release|x64.ActiveCfg = Release|Any CPU
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +90,7 @@ Global
 		{C1426AF5-2003-48A8-9817-33B4477A5D81} = {AF0C2C78-6337-4227-9CEC-3B7526394771}
 		{365EEED8-D829-4115-8105-EAB6ADBEEEFE} = {2EF6624E-7C87-40BD-8EBB-055F233BD24E}
 		{B5500745-9C1E-406E-B078-944DF9C6DE1D} = {AF0C2C78-6337-4227-9CEC-3B7526394771}
+		{608E78BA-6DAF-4412-8BBA-F23EA1859E9C} = {AF0C2C78-6337-4227-9CEC-3B7526394771}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

@@ -1,4 +1,4 @@
-﻿using NatickFantasyGM.Core.PlayerProjections.Aggregates;
+﻿using NatickFantasyGM.Core.PlayerProjections.PlayerAggregate;
 using NatickFantasyGM.Core.PlayerProjections.Interfaces;
 using NatickFantasyGM.Core.PlayerProjections.Specifications.Core;
 using NatickFantasyGM.Infrastructure.PlayerProjections.DAOs;
@@ -78,16 +78,21 @@ public class PlayerRepository : IPlayerRepository
             foreach (var playerDAO in playerDAOs)
             {
                 var player = CreatePlayerFromDAO(playerDAO);
-                players.Add(player);
+                if (player != null)
+                {
+                    players.Add(player);
+                }
             }
 
-            return players;
+            return players.DistinctBy(x => x.Id).ToList();
         }
     }
 
     private Player CreatePlayerFromDAO(BaseballPlayerDAO playerDAO)
     {
         var allThirdPartyProjections = GenerateThirdPartyProjections(playerDAO);
+        if (allThirdPartyProjections.Any() == false)
+            return null;
 
         var weightedProjections = WeightProjections(allThirdPartyProjections);
 
@@ -106,15 +111,11 @@ public class PlayerRepository : IPlayerRepository
         var zips = allThirdPartyProjections.FirstOrDefault(x => x.ProjectionSource == ProjectionSource.ZiPS);
         var steamer = allThirdPartyProjections.FirstOrDefault(x => x.ProjectionSource == ProjectionSource.Steamer);
 
-        if (zips != null)
-        {
-            weightedProjections.Add(new WeightedProjection(zips.Id, 50));
-        }
+        var zipsId = zips != null ? zips.Id : default(Guid);
+        var steamerId = steamer != null ? steamer.Id : default(Guid);
 
-        if (steamer != null)
-        {
-            weightedProjections.Add(new WeightedProjection(steamer.Id, 50));
-        }
+        weightedProjections.Add(new WeightedProjection(ProjectionSource.ZiPS, 50, zipsId));
+        weightedProjections.Add(new WeightedProjection(ProjectionSource.Steamer, 50, steamerId));
 
         return weightedProjections;
     }
@@ -186,7 +187,10 @@ public class PlayerRepository : IPlayerRepository
                 }
             }
 
-            allThirdPartyProjections.Add(new ThirdPartyProjection(Guid.NewGuid(), source, simpleStats, ratios));
+            if(battingDAO != null || pitchingDAO != null)
+            {
+                allThirdPartyProjections.Add(new ThirdPartyProjection(Guid.NewGuid(), source, simpleStats, ratios));
+            }
         }
 
         return allThirdPartyProjections;
